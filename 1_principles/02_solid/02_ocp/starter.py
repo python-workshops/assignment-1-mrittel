@@ -25,8 +25,13 @@ Open/Closed Principle - Shape Calculator
 # TODO: Zaimplementuj interfejs Shape
 # Klasa abstrakcyjna z metodą calculate_area()
 
-class Shape:
-    pass
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def calculate_area(self) -> float:
+        pass
+
 
 
 # TODO: Zaimplementuj Circle
@@ -35,8 +40,11 @@ class Shape:
 # Pole = π * r²  (użyj 3.14 dla π)
 
 class Circle:
-    pass
+    def __init__(self, radius):
+        self.radius = radius
 
+    def calculate_area(self) -> float:
+        return 3.14 * self.radius**2
 
 # TODO: Zaimplementuj Square
 # Przyjmuje side w konstruktorze
@@ -44,7 +52,11 @@ class Circle:
 # Pole = side²
 
 class Square:
-    pass
+    def __init__(self, side):
+        self.side = side
+
+    def calculate_area(self) -> float:
+        return self.side**2
 
 
 # TODO: Zaimplementuj Triangle
@@ -53,7 +65,12 @@ class Square:
 # Pole = (base * height) / 2
 
 class Triangle:
-    pass
+    def __init__(self, base, height):
+        self.base = base
+        self.height = height
+
+    def calculate_area(self) -> float:
+        return self.base * self.height * 0.5
 
 
 # TODO: Zaimplementuj AreaCalculator
@@ -61,7 +78,11 @@ class Triangle:
 # i zwraca sumę ich pól używając polimorfizmu
 
 class AreaCalculator:
-    pass
+    def total_area(self, shapes:list[Shape]) -> float:
+        area = 0.0
+        for shape in shapes:
+            area += shape.calculate_area()
+        return area
 
 
 # OCP: Open for extension, Closed for modification

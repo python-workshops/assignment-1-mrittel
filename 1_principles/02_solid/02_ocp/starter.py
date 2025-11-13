@@ -39,7 +39,7 @@ class Shape(ABC):
 # Dziedziczy po Shape
 # Pole = π * r²  (użyj 3.14 dla π)
 
-class Circle:
+class Circle(Shape):
     def __init__(self, radius):
         self.radius = radius
 
@@ -51,7 +51,7 @@ class Circle:
 # Dziedziczy po Shape
 # Pole = side²
 
-class Square:
+class Square(Shape):
     def __init__(self, side):
         self.side = side
 
@@ -64,7 +64,7 @@ class Square:
 # Dziedziczy po Shape
 # Pole = (base * height) / 2
 
-class Triangle:
+class Triangle(Shape):
     def __init__(self, base, height):
         self.base = base
         self.height = height
